@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+	<link rel="stylesheet" href="../Timer/animate.css">
+
+	<style>
+		body {
+			background-image: url('bg.jpg');
+			background-size: cover;
+		}
+
+		#box {
+			border: 1px solid;
+			width: 406px;
+			background: black;
+			border-radius: 42px;
+			margin-top: -6px;
+		}
+
+		#display {
+
+			width: 400px;
+			height: 80px;
+			font-size: 30px;
+			/*border-radius: 40px;*/
+			border-top-right-radius: 40px;
+			border-top-left-radius: 40px;
+			border-color: #ff000000;
+			box-shadow: 0px 12px 61px -3px inset red;
+			background-color: black;
+			color: white;
+
+		}
+
+		.number {
+
+			width: 70px;
+			height: 70px;
+			border-radius: 60px;
+			font-size: 50px;
+			background-color: #ff000000;
+			border: 2px solid red;
+			box-shadow: 2px 2px 37px -3px inset red;
+			color: white;
+			cursor: pointer;
+		}
+
+		.operator {
+
+			width: 70px;
+			height: 70px;
+			border-radius: 60px;
+			font-size: 45px;
+			background-color: #ff000000;
+			border: 2px solid red;
+			color: white;
+			cursor: pointer;
+		}
+
+		.equal {
+
+			width: 279px;
+			height: 65px;
+			border-radius: 60px;
+			font-size: 45px;
+			background-color: #ff000000;
+			border: 2px solid red;
+			color: white;
+			cursor: pointer;
+			margin-top: 30px;
+			margin-bottom: 30px;
+
+		}
+
+		.equal:hover {
+			box-shadow: 2px 2px 37px -3px inset #795548;
+		}
+
+		.number:hover {
+			border-color: black;
+		}
+
+		.row-1 {
+			margin-right: 30px;
+			margin-top: 30px;
+		}
+
+		.row-2 {
+			margin-right: 30px;
+			margin-top: 30px;
+
+		}
+
+		.row-3 {
+			margin-right: 30px;
+			margin-top: 30px;
+
+		}
+
+		.row-4 {
+			margin-right: 30px;
+			margin-top: 30px;
+
+		}
+
+		h1 {
+			color: white;
+			position: absolute;
+			top: 240px;
+			left: 160px;
+			letter-spacing: 3px;
+		}
+
+		#btn {
+			position: absolute;
+			top: 23px;
+			left: 1281px;
+			border: 2px solid white;
+			padding: 10px;
+			color: white;
+			text-decoration: none;
+			border-radius: 10px;
+		}
+
+		#btn:hover {
+			border-color: red;
+		}
+	</style>
+
+</head>
+
+<body>
+	<h1 class="animated fadeInDown">Calculator</h1>
+
+	<center>
+
+		<div id="box">
+			<input type="display" id="display" placeholder="0" readonly="readonly" style="text-align: center;">
+			<br>
+
+			<input type="button" value="7" class="row-1 number"
+				onclick="document.getElementById('display').value +='7'">
+			<input type="button" value="8" class="row-1 number"
+				onclick="document.getElementById('display').value +='8'">
+			<input type="button" value="9" class="row-1 number"
+				onclick="document.getElementById('display').value +='9'">
+			<input type="button" value="+" class="operator" onclick="document.getElementById('display').value +='+'">
+			<br>
+			<input type="button" value="4" class="row-2 number"
+				onclick="document.getElementById('display').value +='4'">
+			<input type="button" value="5" class="row-2 number"
+				onclick="document.getElementById('display').value +='5'">
+			<input type="button" value="6" class="row-2 number"
+				onclick="document.getElementById('display').value +='6'">
+			<input type="button" value="-" class="operator" onclick="document.getElementById('display').value +='-'">
+			<br>
+			<input type="button" value="1" class="row-3 number"
+				onclick="document.getElementById('display').value +='1'">
+			<input type="button" value="2" class="row-3 number"
+				onclick="document.getElementById('display').value +='2'">
+			<input type="button" value="3" class="row-3 number"
+				onclick="document.getElementById('display').value +='3'">
+			<input type="button" value="*" class="operator" onclick="document.getElementById('display').value +='*'">
+			<br>
+			<input type="button" value="C" class="row-4 operator"
+				onclick="document.getElementById('display').value =''">
+			<input type="button" value="0" class="row-4 number"
+				onclick="document.getElementById('display').value +='0'">
+			<input type="button" value="." class="row-4 number"
+				onclick="document.getElementById('display').value +='.'">
+			<input type="button" value="/" class="operator" onclick="document.getElementById('display').value +='/'">
+			<br>
+			<input type="button" value="=" class="equal" onclick="cal(document.getElementById('display').value)">
+		</div>
+
+
+
+
+
+		<script>
+
+			function cal(x) {
+
+				var flag = 0;
+				var value = x;
+
+				for (var i = 0; i < value.length; i++) {
+					if (value.charAt(i) == '+' && value.charAt(i + 1) == '+' || value.charAt(i) == '-' && value.charAt(i + 1) == '-' || value.charAt(i) == '/' && value.charAt(i + 1) == '/' || value.charAt(i) == '*' && value.charAt(i + 1) == '*' || value.charAt(i) == '.' && value.charAt(i + 1) == '.') {
+						flag = 1;
+					}
+				}
+
+				if (flag == 1) {
+					alert('Wrong Expression');
+					document.getElementById('display').value = ''
+
+				}
+				else {
+					document.getElementById('display').value = eval(value);
+				}
+
+			}
+
+		</script>
+
+
+	</center>
+</body>
+
+</html>
